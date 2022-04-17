@@ -5,12 +5,13 @@ import LoginPage from '../Pages/loginPage';
 import ProductPage from '../Pages/ProductPage';
 import CartPage from '../Pages/CartPage';
 import CheckoutPage from '../Pages/CheckoutPage';
+import users from '.../../../cypress/fixtures/users.json';
 
 // Scenario: As a user, I am able to add items to the cart
 Given('I am logged in the application',()=>{
     LoginPage.loginOnTheApplication();
-    LoginPage.typeUserName('standard_user');
-    LoginPage.typePassword('secret_sauce');
+    LoginPage.typeUserName(users[0].userName);
+    LoginPage.typePassword(users[0].password);
     LoginPage.clickOnLoginButton();
     ProductPage.getProductTitle('Products')
 })

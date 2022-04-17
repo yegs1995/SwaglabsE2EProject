@@ -16,5 +16,11 @@ class LoginPage{
         cy.get('#login-button').click()
     }
 
+    static verifyErrorMessage(message){
+        cy.get('[data-test="error"]').invoke('text').then((errorMessage)=>{
+            expect(errorMessage.trim()).to.equal(message)
+        })
+    }
+
 }
 export default LoginPage;
