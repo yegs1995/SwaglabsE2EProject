@@ -34,9 +34,31 @@ class ProductPage{
             sortedItems = element.map((index, html) => Cypress.$(html).text()).get();
             expect(unsortedItems, 'Items are sorted').to.not.equal(sortedItems);
         })
-
        
     }
+
+    static clickOnSortByPrice(){
+        cy.get('[data-test="product_sort_container"]').invoke('text').then((item)=>{
+            expect(item.trim()).to.contain('Price (high to low)')
+        })
+    }
+    
+    static ClickSortByPriceAndVerifySortered(){
+        let unsortedItems;
+        let sortedItems;
+
+        cy.get('.inventory_list').each(element => {
+            unsortedItems =element.map((index, html) => Cypress.$(html).text()).get();           
+        })
+
+        cy.get('[data-test="product_sort_container"]').select('hilo')
+        cy.get('.inventory_list').each(element => {      
+            sortedItems = element.map((index, html) => Cypress.$(html).text()).get();
+            expect(unsortedItems, 'Items are sorted').to.not.equal(sortedItems);
+        })
+       
+    }
+
 
 
 }

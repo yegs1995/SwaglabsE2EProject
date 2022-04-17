@@ -5,5 +5,5 @@ Feature: Validation Three
 
     Scenario: As a standard user I am able to sort the produtct and verify that is right
     Given I am logged in the application
-    When I click on sort by Price high to low
-    Then I should see the products orders by the price high to low 
+    When I click on sort by Price
+    Then I should see the products orders by the price high to low
