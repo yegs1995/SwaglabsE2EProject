@@ -5,7 +5,6 @@ class ProductPage{
             expect(productTitle1.trim()).to.equal(productTitle)
         })
     }
-
     static addItem(itemName){
         let newItemName = itemName.split(" ").join("-")
         cy.get(`#add-to-cart-sauce-labs-${newItemName.toLowerCase()}`).click()
@@ -15,6 +14,30 @@ class ProductPage{
             expect(total.trim()).to.equal(totalItems)
         })
     }
+    static clickOnSortByName(){
+        cy.get('[data-test="product_sort_container"]').invoke('text').then((item)=>{
+            expect(item.trim()).to.contain('Name (Z to A)')
+        })
+    }
+
+    static ClickSortByNameAndVerifySortered(){
+        let unsortedItems;
+        let sortedItems;
+
+        cy.get('.inventory_list').each(element => {
+            unsortedItems =element.map((index, html) => Cypress.$(html).text()).get();           
+        })
+
+        cy.get('[data-test="product_sort_container"]').select('za')    
+
+        cy.get('.inventory_list').each(element => {      
+            sortedItems = element.map((index, html) => Cypress.$(html).text()).get();
+            expect(unsortedItems, 'Items are sorted').to.not.equal(sortedItems);
+        })
+
+       
+    }
+
 
 }
 export default ProductPage;

@@ -2,25 +2,25 @@
 
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import LoginPage from '../Pages/loginPage';
+import ProductPage from '../Pages/ProductPage';
+import users from '.../../../cypress/fixtures/users.json'
 
-Given('I navigate to the login page',()=>{
-    LoginPage.loginOnTheApplication()
-})
 
-When('I type the valid username {string}',(username)=>{
-    LoginPage.typeUserName(username)
-})
-
-And('I type the valid password {string}',(password)=>{
-   LoginPage.typePassword(password)
-})
-
-And('I click on Login button',()=>{
+Given('I am logged in the application',()=>{
+    LoginPage.loginOnTheApplication();
+    LoginPage.typeUserName(users[0].userName);
+    LoginPage.typePassword(users[0].password);
     LoginPage.clickOnLoginButton()
 })
 
-Then('The application shold display the {string} view', (productTitle)=>{
-   LoginPage.getProductTitle(productTitle)
+And('I am on the {string} view', (productTitle)=>{
+    ProductPage.getProductTitle(productTitle)
+ })
+
+When('I click on sort by',()=>{
+    ProductPage.clickOnSortByName()
 })
 
-
+Then('I should see the products ordered by the ZA name',()=>{
+    ProductPage.ClickSortByNameAndVerifySortered()
+})
