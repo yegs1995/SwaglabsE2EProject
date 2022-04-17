@@ -1,13 +1,13 @@
 **Ingenious Build's Automation Challenge**
  - What the project is about
-SwaglabsE2EProject is an automated project with aim objective is verify the  main functionalities work correctly, beside guarantee the application has security validations.
+	SwaglabsE2EProject is an automated project with aim objective is verify the  main functionalities work correctly, beside guarantee the application has security 	validations.
   - Why the language and tools selected
-  The language used is JavaScript   and the tool was Cypress and Cucumber  that technology was selected by followign reasons:
--  Easy to setup
-- Excellent documentation
-- It is scalable
-- Can be integrated in CI/CD
-- It is friendly
+  	The language used is JavaScript   and the tool was Cypress and Cucumber  that technology was selected by followign reasons:
+	-  Easy to setup
+	- Excellent documentation
+	- It is scalable
+	- Can be integrated in CI/CD
+	- It is friendly
   - How to set it up
 	  1.  Verify you have installed npm and node.js with the following commands `npm -v` and `node -v`
 	  2. Clone the repository
