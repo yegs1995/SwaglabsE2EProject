@@ -1,0 +1,34 @@
+[
+  {
+    "id":"1",
+    "userName": "standard_user",
+    "password": "secret_sauce",
+    "firstName":"Kitty",
+    "lastName":"Mccormick",
+    "zipCode": "99501"
+  },
+  {
+    "id":"2",
+    "userName": "locked_out_user",
+    "password": "secret_sauce",
+    "firstName":"Garfield",
+    "lastName":"Spencer",
+    "zipCode": "86556"
+  },
+  {
+    "id":"3",
+    "userName": "problem_user",
+    "password": "secret_sauce",
+    "firstName":"Dora",
+    "lastName":"Murillo",
+    "zipCode": "71601"
+  },
+  {
+    "id":"4",
+    "userName": "performance_glitch_user",
+    "password": "secret_sauce",
+    "firstName":"Siddharth",
+    "lastName":"Guy",
+    "zipCode": "96162"
+  }
+]

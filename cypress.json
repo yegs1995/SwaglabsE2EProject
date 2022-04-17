@@ -1,0 +1,16 @@
+{
+  "chromeWebSecutiry":false,
+  "projectId": "yqqjr5",
+  "reporter": "cypress-mochawesome-reporter",
+  "testFiles": "**/*.feature",
+  "ignoreTestFiles":["*.js","*.md"],  
+  "reporterOptions": {
+    "reportDir": "cypress/report",
+    "charts": true,
+    "reportPageTitle": "swaglabs automated test report",
+    "embeddedScreenshots":true
+  },
+  "env":{
+    "url":"https://www.saucedemo.com/"
+  }
+}
