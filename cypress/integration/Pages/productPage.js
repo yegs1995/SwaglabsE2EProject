@@ -7,8 +7,8 @@ class ProductPage{
     }
 
     static addItem(itemName){
-        cy.get(`[data-test="add-to-cart-sauce-labs-${itemName}"]`).click()
-      
+        let newItemName = itemName.split(" ").join("-")
+        cy.get(`#add-to-cart-sauce-labs-${newItemName.toLowerCase()}`).click()
     }
     static getTotalItemsAdded(totalItems){
         cy.get('[class="shopping_cart_badge"]').invoke('text').then((total)=>{

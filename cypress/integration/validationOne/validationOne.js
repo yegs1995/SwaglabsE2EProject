@@ -4,6 +4,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import LoginPage from '../Pages/loginPage';
 import ProductPage from '../Pages/ProductPage';
 import CartPage from '../Pages/CartPage';
+import CheckoutPage from '../Pages/CheckoutPage';
 
 // Scenario: As a user, I am able to add items to the cart
 Given('I am logged in the application',()=>{
@@ -22,57 +23,48 @@ And('I click on Add to cart button in the second selected {string}',(item)=>{
     ProductPage.addItem(item);
 })
 
-Then('I should see the {string} items added in the cart', (totalItems)=>{
-    ProductPage.getTotalItemsAdded(totalItems);
+And('I go to cart view', ()=>{
+    CartPage.clickOnCartButton()
 })
 
-// Scenario: As a user, I am able to remove items from the cart
-Given('I have two items added in the cart',()=>{
-    CartPage.clickOnCartButton()
-})  
+And('I should see the {string} items added in the cart', (totalItems)=>{
+    ProductPage.getTotalItemsAdded(totalItems)
+})
  
-When('I earch {string} item and click on Remove button',(itemToEliminate)=>{
+And('I search {string} item and click on Remove button',(itemToEliminate)=>{
     CartPage.ClickOnItemToEliminate(itemToEliminate)
 })  
-Then('The cart should display just {string} item',(totalItems)=>{
+And('The cart should display just {string} item',(totalItems)=>{
    ProductPage.getTotalItemsAdded(totalItems);
 }) 
-
-// Scenario: As a user, I am able to verify the checkout
-Given('I am on my cart view',()=>{
-    CartPage.clickOnCartButton()
+And('I click on Checkout button',()=>{
+    CartPage.ClickOnCheckoutButton();
+    CheckoutPage.getCheckoutTitle()
 })  
 
-When('I click on Checkout button',()=>{
-    CartPage.ClickOnCheckoutButton()
-})  
+And('I should complete the information',()=>{
+    CheckoutPage.sendFirstName('Camila');
+    CheckoutPage.sendlastName('Camila');
+    CheckoutPage.sendZipCode('99501')
 
-Then('I should complete the information',()=>{
-   
 })  
 And('Click on the continue button',()=>{
-   
+   CheckoutPage.clickOnContinueButton()
 }) 
-And('The item added should be displayed',()=>{
-   
+And('The item {string} added should be displayed',(item)=>{
+   CheckoutPage.verifyItem(item)
 })  
 And('The total values is right',()=>{
-   
+    CheckoutPage.verifyTotalValue()
 })
 
-// Scenario: As a user, I am able to finish the purchase
-
-Given('I am on the overview',()=>{
-   
+And('I click on Finish button',()=>{
+   CheckoutPage.clickOnFinishButton()
 })  
 
-When('I click on Finish button',()=>{
-   
-})  
-
-Then('The application should display {string} message',()=>{
-   
+Then('The application should display {string} message',(message)=>{
+   CheckoutPage.verifySuccessMessage(message)
 }) 
-And('I should see additional the {string}',()=>{
-   
+And('I should see additional the {string}',(message)=>{
+   CheckoutPage.verifyDetailSuccessMessage(message);
 })

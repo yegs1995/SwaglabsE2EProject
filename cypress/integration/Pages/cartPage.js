@@ -3,11 +3,10 @@ class CartPage{
     static clickOnCartButton(){
         cy.get(".shopping_cart_link").click();
     }
-
     static ClickOnItemToEliminate(itemName){
-        cy.get(`[data-test="remove-sauce-labs-${itemName}"]`).click()      
+        let newItemName = itemName.split(" ").join("-")
+        cy.get(`#remove-sauce-labs-${newItemName.toLowerCase()}`).click()
     }
-
     static ClickOnCheckoutButton(){
         cy.get('#checkout').click()
     }
