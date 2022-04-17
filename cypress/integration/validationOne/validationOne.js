@@ -3,6 +3,7 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import LoginPage from '../Pages/loginPage';
 import ProductPage from '../Pages/ProductPage';
+import CartPage from '../Pages/CartPage';
 
 // Scenario: As a user, I am able to add items to the cart
 Given('I am logged in the application',()=>{
@@ -10,19 +11,11 @@ Given('I am logged in the application',()=>{
     LoginPage.typeUserName('standard_user');
     LoginPage.typePassword('secret_sauce');
     LoginPage.clickOnLoginButton();
-    LoginPage.getProductTitle('PRODUCTS');
+    ProductPage.getProductTitle('Products')
 })
 
-When('I select one item from the product list {string}',(item)=>{
-   ProductPage.selectItemByName(item);
-})
-
-And('I click on Add to cart button in the item selected {string}',(item)=>{
+When('I click on Add to cart button in the item selected {string}',(item)=>{
     ProductPage.addItem(item);
-})
-
-And('I select second item from the product list {string}',(item)=>{
-    ProductPage.selectItemByName(item);
 })
 
 And('I click on Add to cart button in the second selected {string}',(item)=>{
@@ -35,27 +28,23 @@ Then('I should see the {string} items added in the cart', (totalItems)=>{
 
 // Scenario: As a user, I am able to remove items from the cart
 Given('I have two items added in the cart',()=>{
-   
+    CartPage.clickOnCartButton()
 })  
-
-When('I search one item by its name',()=>{
-   
+ 
+When('I earch {string} item and click on Remove button',(itemToEliminate)=>{
+    CartPage.ClickOnItemToEliminate(itemToEliminate)
 })  
-
-And('I click on Remove button',()=>{
-   
-})  
-Then('The cart should display just one item',()=>{
-   
+Then('The cart should display just {string} item',(totalItems)=>{
+   ProductPage.getTotalItemsAdded(totalItems);
 }) 
 
 // Scenario: As a user, I am able to verify the checkout
 Given('I am on my cart view',()=>{
-   
+    CartPage.clickOnCartButton()
 })  
 
 When('I click on Checkout button',()=>{
-   
+    CartPage.ClickOnCheckoutButton()
 })  
 
 Then('I should complete the information',()=>{

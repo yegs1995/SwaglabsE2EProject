@@ -2,6 +2,7 @@
 
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import LoginPage from '../Pages/loginPage';
+import ProductPage from '../Pages/ProductPage';
 
 Given('I navigate to the login page',()=>{
     LoginPage.loginOnTheApplication()
@@ -20,7 +21,7 @@ And('I click on Login button',()=>{
 })
 
 Then('The application shold display the {string} view', (productTitle)=>{
-   LoginPage.getProductTitle(productTitle)
+    ProductPage.getProductTitle(productTitle)
 })
 
 

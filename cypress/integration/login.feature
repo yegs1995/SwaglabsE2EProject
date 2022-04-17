@@ -7,4 +7,4 @@ Feature: Login
     When I type the valid username "standard_user"
     And I type the valid password "secret_sauce"
     And I click on Login button
-    Then The application shold display the "PRODUCTS" view
+    Then The application shold display the "Products" view

@@ -1,6 +1,6 @@
 {
   "baseUrl":"https://www.saucedemo.com/",
-  "chromeWebSecutiry":false,
+  "chromeWebSecurity":false,
   "projectId": "yqqjr5",
   "reporter": "cypress-mochawesome-reporter",
   "testFiles": "**/*.feature",

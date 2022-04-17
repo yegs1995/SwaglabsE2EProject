@@ -1,12 +1,14 @@
 class ProductPage{
-
-    static selectItemByName(itemName){
-        cy.get('.inventory_list').find('.inventory_item').invoke('text').then((item)=>{
-            expect('Sauce Labs '+itemName.trim()).to.equal(item)
+    
+    static getProductTitle(productTitle){
+        cy.get('[class="title"]').invoke('text').then((productTitle1)=>{
+            expect(productTitle1.trim()).to.equal(productTitle)
         })
     }
+
     static addItem(itemName){
-        cy.get(`#add-to-cart-sauce-${naitemNameme}`).click()
+        cy.get(`[data-test="add-to-cart-sauce-labs-${itemName}"]`).click()
+      
     }
     static getTotalItemsAdded(totalItems){
         cy.get('[class="shopping_cart_badge"]').invoke('text').then((total)=>{
