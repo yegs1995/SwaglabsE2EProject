@@ -21,3 +21,7 @@
 	  3. Select the tool following the next criteria (Time for automation, knowledge and future improvements)
 	  4.  After defined the tool, Create the structure
 	  5. Finally, I added the test cases for every requirement
+
+  - **Futures improvements**
+  	1. Add different test cases where validating the data, values, formats (Happy and Unhappy path)
+  	2. Improve current test cases doing asyn functions
